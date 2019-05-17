@@ -1,0 +1,86 @@
+
+{% extends "main_page/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+  <h1>Identify Breed</h1>
+<div>
+<hr>
+<b><h3>Upload Image</h3></b>
+<br>
+<br>
+<form method="POST" enctype="multipart/form-data" id="my_form">
+  {% csrf_token %}
+<center><img id="dvPreview"></center>
+<br>
+<!--<input class="btn btn-primary" style="background-color: #3f51b5;" id="fileupload" type="file" />-->
+
+<div id="form_image" >{{ form.img1 }}</div>
+<br><br>
+<input type="submit" name="predict" class="btn btn-success" value="Predict" style="border-radius: 50px; width: 100px;" >
+<br><br>
+
+<h3>Breed: {{ breeds }}</h3>
+
+</form>
+<div class="form-row">
+  <div class="form-col"><b></div></div>
+<div class="form-row">
+  <div class="form-col"> </div></div></b>
+
+
+<div class="form-row">
+  <div class="form-col"><b></b></div></div>
+<div class="form-row">
+  <div class="form-col"><!--<textarea class="form-control" style="height: 300px; width: 500px;"></textarea>--></div></div>
+
+ <br><br>
+
+ <input  type="button" onclick="myFunction()" style="border-radius: 50px; " class="btn btn-danger" value="Is this dog lost?">
+
+<div id="myDIV" style="display: none">
+  <br>
+<form method="POST" enctype="multipart/form-data" id="my_form">
+{% csrf_token %}
+  <div class="form-row">
+  <div class="form-group col-md-6"><b><div id="form_image" >{{ form2.img1 }}</div>
+  </div></b>
+  </div>
+
+  <div class="form-row">
+  <div class="form-group col-md-6"><b>{{ form2.breed|as_crispy_field }}
+  </div></b>
+  </div>
+
+  <div class="form-row">
+  <div class="form-col"><b>Enter Your Details </b></div></div>
+  <div class="form-row">
+  <div class="form-group col-md-6"><b>{{ form2.name|as_crispy_field }}
+  </div></b>
+  <div class="form-group col-md-6"><b>{{ form2.contact|as_crispy_field }}
+  </div></b>
+  </div>
+
+  <div class="form-row">
+  <div class="form-group col-md-6"><b>{{ form2.address|as_crispy_field }}
+  </div></b>
+  </div>
+
+  <div class="form-row">
+  <div class="form-group col-md-6"><b>{{ form2.additional_info|as_crispy_field }}
+  </div></b>
+  </div>
+  
+  <input type="submit" class="btn-success" style="border-radius: 50px; width: 100px;" name="lost">
+
+  
+
+</div>
+
+</form>
+
+
+</div>
+
+{% endblock content %}

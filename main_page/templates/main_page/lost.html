@@ -1,0 +1,25 @@
+
+{% extends "main_page/base.html" %}
+{% block content %}
+{{ breeds }}
+	{% for post in posts %}
+
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+      <b>{{ post.breed }}</b>
+      <small class="text-muted">{{ post.date_posted|date:"d F, Y" }}</small>
+    </div>
+    <center><img src="{{ post.img1.url }} " width="500" height="300"></center><br>
+    <h2><a class="article-title" href="#">Found By:</a></h2>
+    <label>Name: {{ post.name }}</label>
+    <p class="article-content">Address: {{ post.address }}</p>
+    <p class="article-content">Contact: {{ post.contact }}</p>
+    <p class="article-content">Additional information: {{ post.additional_info }}</p>
+
+  </div>
+</article>
+	{% endfor %}
+
+
+{% endblock content %}
